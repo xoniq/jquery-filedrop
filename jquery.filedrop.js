@@ -72,11 +72,13 @@
         files_count = 0,
         files;
 
-    $('#' + opts.fallback_id).css({
+    $('#' + opts.fallback_id).parent().css({
       display: 'none',
       width: 0,
       height: 0
     });
+
+    this.css('display', 'inherit');
 
     this.on('drop', drop).on('dragstart', opts.dragStart).on('dragenter', dragEnter).on('dragover', dragOver).on('dragleave', dragLeave);
     $(document).on('drop', docDrop).on('dragenter', docEnter).on('dragover', docOver).on('dragleave', docLeave);
@@ -411,7 +413,7 @@
                   this.send(ui8a.buffer);
               }
           }
-          
+
         xhr.sendAsBinary(builder);
 
         global_progress[global_progress_index] = 0;
